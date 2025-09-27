@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliphera Media - Social Media Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="web-logo.png">
+    <link rel="apple-touch-icon" href="web-logo.png">
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        /* CSS Variables for Responsive Design */
+        :root {
+            --primary: #440381;
+            --secondary: #f41698;
+            --accent1: #51E5FF;
+            --accent2: #FFA5A5;
+            --light: #FFFFFF;
+            --dark: #333333;
+            --gray: #f5f5f5;
+            --text: #444444;
+            
+            /* Responsive font sizes */
+            --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.9rem);
+            --fs-sm: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+            --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+            --fs-lg: clamp(1.125rem, 1.05rem + 0.375vw, 1.35rem);
+            --fs-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.6rem);
+            --fs-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --fs-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.8rem);
+            --fs-4xl: clamp(2.25rem, 1.7rem + 2.75vw, 3.5rem);
+            --fs-5xl: clamp(3rem, 2.2rem + 4vw, 5rem);
+            
+            /* Responsive spacing */
+            --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+            --space-sm: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
+            --space-md: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+            --space-lg: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+            --space-xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+            --space-2xl: clamp(3rem, 2.25rem + 3.75vw, 5rem);
+            --space-3xl: clamp(4rem, 3rem + 5vw, 7rem);
+            
+            /* Container max-widths */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+            --container-2xl: 1536px;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 100%; /* Base font size for rem calculations */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+            font-size: var(--fs-base);
+        }
+
+        /* Improved container with responsive max-width */
+        .container {
+            width: 100%;
+            max-width: min(100% - 2rem, var(--container-xl));
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: var(--space-sm) 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-md);
+        }
+
+        .web-logo{
+            margin-right: var(--space-xs);
+            border-radius: 50%;
+            height: clamp(40px, 5vw, 50px);
+            width: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: var(--fs-xl);
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--space-md);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: var(--fs-sm);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: var(--fs-sm);
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: var(--fs-xl);
+            cursor: pointer;
+            padding: var(--space-xs);
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .hamburger:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: clamp(120px, 15vw, 180px) 0 clamp(80px, 10vw, 120px);
+            background: linear-gradient(135deg, rgba(116, 8, 218, 0.05) 0%, rgba(236, 54, 141, 0.05) 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-xl);
+            padding: 0 var(--space-md);
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 0; /* Prevent flex item from overflowing */
+        }
+
+        .hero-heading {
+            font-size: var(--fs-4xl);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .hero-heading span {
+            color: var(--secondary);
+        }
+
+        .hero-description {
+            font-size: var(--fs-lg);
+            color: var(--text);
+            margin-bottom: var(--space-lg);
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            min-width: 0; /* Prevent flex item from overflowing */
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: min(500px, 90vw);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: auto;
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--space-2xl) 0;
+            background-color: var(--gray);
+        }
+
+        .services-scroll {
+            overflow: hidden;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .scroll-content {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            padding: var(--space-md) 0;
+        }
+
+        .scroll-item {
+            white-space: nowrap;
+            padding: var(--space-sm) var(--space-md);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50px;
+            margin: 0 var(--space-sm);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: var(--fs-sm);
+        }
+
+        .scroll-item i {
+            margin-right: var(--space-xs);
+            font-size: var(--fs-lg);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: var(--fs-3xl);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: var(--space-lg);
+            padding: 0 var(--space-md);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: var(--space-lg);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: height 0.5s ease;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            color: white;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+            opacity: 1;
+        }
+
+        .service-card:hover .service-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .service-icon {
+            width: clamp(70px, 10vw, 80px);
+            height: clamp(70px, 10vw, 80px);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            font-size: var(--fs-2xl);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .service-title {
+            font-size: var(--fs-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover .service-title {
+            color: white;
+        }
+
+        .service-desc {
+            color: var(--text);
+            transition: color 0.3s ease;
+            flex-grow: 1;
+        }
+
+        .service-card:hover .service-desc {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Work Section */
+        .work {
+            padding: var(--space-2xl) 0;
+            background-color: white;
+        }
+
+        .work-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            padding: 0 var(--space-md);
+        }
+
+        .filter-btn {
+            padding: var(--space-xs) var(--space-md);
+            background: var(--gray);
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: var(--fs-sm);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: var(--space-md);
+            padding: 0 var(--space-md);
+        }
+
+        .work-card {
+            aspect-ratio: 4/3;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+
+        .work-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            transition: all 0.5s ease;
+        }
+
+        #shorts-us{
+            margin-top: 5rem;
+        }
+
+        .work-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--space-md);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .work-card:hover .work-overlay {
+            transform: translateY(0);
+        }
+
+        .work-card:hover .work-img {
+            transform: scale(1.1);
+        }
+
+        .work-title {
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .work-category {
+            font-size: var(--fs-sm);
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--space-2xl) 0;
+            background-color: var(--gray);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            padding: 0 var(--space-md);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-title {
+            font-size: var(--fs-2xl);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .about-desc {
+            margin-bottom: var(--space-md);
+            color: var(--text);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            padding: 0 var(--space-md);
+        }
+
+        .stat {
+            text-align: center;
+            padding: var(--space-lg);
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: var(--fs-3xl);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-text {
+            font-weight: 500;
+            color: var(--text);
+            font-size: var(--fs-sm);
+        }
+
+        .team-title {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            font-size: var(--fs-2xl);
+            color: var(--primary);
+            padding: 0 var(--space-md);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: var(--space-lg);
+            padding: 0 var(--space-md);
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-img {
+            height: 250px;
+            border-radius: 15px 15px 0 0;
+            flex-shrink: 0;
+        }
+
+        .team-info {
+            padding: var(--space-md);
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .team-name {
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+        }
+
+        .team-expertise {
+            color: var(--text);
+            font-size: var(--fs-sm);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--space-2xl) 0;
+            background-color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: var(--space-xl);
+            padding: 0 var(--space-md);
+        }
+
+        .contact-form {
+            background: var(--gray);
+            padding: var(--space-lg);
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+            color: var(--dark);
+            font-size: var(--fs-sm);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--fs-base);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(68, 3, 129, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: var(--space-lg);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: clamp(45px, 6vw, 50px);
+            height: clamp(45px, 6vw, 50px);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--fs-lg);
+            margin-right: var(--space-sm);
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            color: var(--text);
+            font-size: var(--fs-sm);
+        }
+
+        .social-links {
+            background: var(--gray);
+            padding: var(--space-lg);
+            border-radius: 15px;
+        }
+
+        .social-links h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--primary);
+            font-size: var(--fs-lg);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: clamp(35px, 5vw, 40px);
+            height: clamp(35px, 5vw, 40px);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: var(--fs-sm);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: var(--space-2xl) 0 var(--space-md);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            padding: 0 var(--space-md);
+        }
+
+        .footer-col h3 {
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: white;
+        }
+
+        .footer-col p {
+            margin-bottom: var(--space-md);
+            opacity: 0.8;
+            font-size: var(--fs-sm);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            font-size: var(--fs-sm);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-form {
+            display: flex;
+            margin-top: var(--space-sm);
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .footer-form input {
+            padding: var(--space-xs) var(--space-sm);
+            border: none;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--fs-sm);
+        }
+
+        .footer-form button {
+            padding: var(--space-xs) var(--space-sm);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--fs-sm);
+            white-space: nowrap;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: var(--fs-sm);
+            padding: 0 var(--space-md);
+        }
+
+        /* Enhanced Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: var(--space-lg);
+            }
+            
+            .hero-heading {
+                font-size: var(--fs-3xl);
+            }
+            
+            .about-content {
+                gap: var(--space-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: var(--space-md) 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: var(--space-sm) var(--space-md);
+                border-bottom: 1px solid #f0f0f0;
+                width: 100%;
+            }
+            
+            .nav-links li:last-child a {
+                border-bottom: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-lg);
+            }
+            
+            .hero-description {
+                max-width: 100%;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-form {
+                flex-direction: column;
+            }
+            
+            .services-grid, .work-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-filter {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: var(--space-xs);
+                scrollbar-width: none; /* Firefox */
+            }
+            
+            .work-filter::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Edge */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .nav-container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .hero-content, .services-grid, .work-grid, 
+            .about-content, .about-stats, .team-grid, 
+            .contact-container, .footer-container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .hero-heading {
+                font-size: var(--fs-2xl);
+            }
+            
+            .section-title {
+                font-size: var(--fs-2xl);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .service-card, .stat, .team-card {
+                padding: var(--space-md);
+            }
+            
+            .contact-form {
+                padding: var(--space-md);
+            }
+            
+            .footer-form button {
+                align-self: stretch;
+            }
+        }
+
+        /* TV and Large Screen Optimizations */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: var(--container-2xl);
+            }
+            
+            .hero-heading {
+                font-size: var(--fs-5xl);
+            }
+            
+            .section-title {
+                font-size: var(--fs-4xl);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .work-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero-img {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .scroll-content {
+                animation: none;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: var(--space-sm);
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .service-card:hover {
+                transform: none;
+            }
+            
+            .work-card:hover .work-overlay {
+                transform: translateY(0);
+            }
+            
+            .work-card:hover .work-img {
+                transform: none;
+            }
+            
+            /* Make buttons more touch-friendly */
+            .btn, .filter-btn, .social-icon {
+                min-height: 44px;
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                padding: var(--space-md) var(--space-lg);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            #navbar, .services-scroll, .work-filter, 
+            .contact-form, .footer, .hamburger {
+                display: none;
+            }
+            
+            .hero, .services, .work, .about, .contact {
+                padding: 1cm 0;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: #000;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img class="web-logo" src="web-logo.png" alt="Cliphera Media Logo">
+                <span class="logo-text">Cliphera Media</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Our Work</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <a href="#contact" class="btn">Get Started</a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-heading">Elevate Your <span>Social Media</span> Presence</h1>
+                <p class="hero-description">We help brands grow through powerful video editing, creative storytelling, and content that truly connects with audiences.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn">Our Services</a>
+                    <a href="#contact" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.pexels.com/photos/8100067/pexels-photo-8100067.jpeg" alt="Video Editing Workspace" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-scroll">
+            <div class="scroll-content">
+                <div class="scroll-item"><i class="fa-solid fa-clapperboard"></i> Instagram Reels</div>
+                <div class="scroll-item"><i class="fa-solid fa-person-running"></i> Motion Graphics Videos</div>
+                <div class="scroll-item"><i class="fa-solid fa-gears"></i>SEO Optimization</div>
+                <div class="scroll-item"><i class="fa-solid fa-camera"></i> Instagram Posts</div>
+                <div class="scroll-item"><i class="fas fa-hashtag"></i> YT Short form Videos</div>
+                <div class="scroll-item"><i class="fas fa-video"></i> Brand Video Editing</div>
+                <div class="scroll-item"><i class="fa-brands fa-youtube"></i> YT Long form Videos</div>
+                <div class="scroll-item"><i class="fas fa-ad"></i> Advertising Videos</div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <h3 class="service-title">Youtube Video Editing</h3>
+                    <p class="service-desc">We develop customized strategies to help you achieve your business goals and maximize your social media presence.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="service-title">SEO Optimization</h3>
+                    <p class="service-desc">Our creative team produces engaging, platform-specific content that resonates with your target audience.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <h3 class="service-title">Motion graphics Videos</h3>
+                    <p class="service-desc">We provide detailed performance reports and insights to continuously optimize your social media efforts.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </div>
+                    <h3 class="service-title">Instagram Reels Editing</h3>
+                    <p class="service-desc">Our targeted ad campaigns drive results, whether you're looking for leads, conversions, or brand awareness.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3 class="service-title">Advertising Video Editing</h3>
+                    <p class="service-desc">We build and nurture your online community, fostering meaningful connections with your audience.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="service-title">Instagram Post</h3>
+                    <p class="service-desc">From concept to final edit, we create compelling video content that captures attention and drives engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="work" class="work">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            
+            <div class="work-filter">
+                <button class="filter-btn active" data-filter="all">Youtube Long-Form Videos</button>
+            </div>
+            
+            <div class="work-grid">
+                <div class="work-card" data-category="instagram">
+                    <iframe class="work-img" src="https://www.youtube.com/embed/MuqkGzi4O_4?si=2gDCHHmJPLm_GY1x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Satnam Bopp</h3>
+                        <p class="work-category">Youtube</p>
+                    </div>
+                </div>
+                
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://www.youtube.com/embed/N965iwASnzs?si=kPF7GEB3vJCJiMNX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Business Idea</h3>
+                        <p class="work-category">YouTube</p>
+                    </div>
+                </div>
+                
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://www.youtube.com/embed/33KRj41F548?si=a2BKp5W8NUf9NmDp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Future Agents</h3>
+                        <p class="work-category">Youtube</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-filter">
+                <button id="shorts-us" class="filter-btn active" data-filter="all">Youtube Short-Form Videos</button>
+            </div>
+            <div class="work-grid">
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://youtube.com/embed/ZO1nEAELYhM?si=mdFtLP2KlvqkN3Jw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Motion Graphic</h3>
+                        <p class="work-category">Youtube Shorts</p>
+                    </div>
+                </div>
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://youtube.com/embed/-k-n-9k9cy4?si=fehzThBJuga6Knb7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Caption Work</h3>
+                        <p class="work-category">Shorts</p>
+                    </div>
+                </div>
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://youtube.com/embed/Ys35Z0g0DTA?si=AGy6YeAScZ8db2Ak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Aditya Final</h3>
+                        <p class="work-category">Shorts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="work-grid">
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://youtube.com/embed/uzu7YU7W2K4?si=jDcHu_TwGcNa_875" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Business Edit</h3>
+                        <p class="work-category">Shorts</p>
+                    </div>
+                </div>
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://youtube.com/embed/tZH4pdKFqFU?si=195l41n_SKl13E7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Motion Graohics</h3>
+                        <p class="work-category">Shorts</p>
+                    </div>
+                </div>
+                <div class="work-card" data-category="youtube">
+                    <iframe class="work-img" src="https://youtube.com/embed/_200e-TRNns?si=9XdeusOZp0vpSGmU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-overlay">
+                        <h3 class="work-title">Caption</h3>
+                        <p class="work-category">Shorts</p>
+                    </div>
+                </div>
+            </div>
+
+    
+            
+                
+            
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="about-title">About Cliphera Media</h2>
+                    <p class="about-desc">Cliphera Media is a dynamic social media agency specializing in video content creation and editing. We believe in the power of visual storytelling to connect brands with their audiences in meaningful ways.</p>
+                    <p class="about-desc">Our team of creative professionals combines technical expertise with strategic thinking to deliver content that not only looks great but also drives results.</p>
+                    <a href="#contact" class="btn">Work With Us</a>
+                </div>
+            </div>
+            
+            <!-- <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-text">Happy Clients</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-text">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-text">Customer Support</div>
+                </div>
+            </div>
+            
+            <h3 class="team-title">Meet Our Team</h3>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg" alt="Team Member" class="team-img">
+                    <div class="team-info">
+                        <h4 class="team-name">Sarah Johnson</h4>
+                        <p class="team-role">Creative Director</p>
+                        <p class="team-expertise">Video Editing & Strategy</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg" alt="Team Member" class="team-img">
+                    <div class="team-info">
+                        <h4 class="team-name">Michael Chen</h4>
+                        <p class="team-role">Video Editor</p>
+                        <p class="team-expertise">Motion Graphics & Effects</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg" alt="Team Member" class="team-img">
+                    <div class="team-info">
+                        <h4 class="team-name">Emily Rodriguez</h4>
+                        <p class="team-role">Content Strategist</p>
+                        <p class="team-expertise">Social Media & Analytics</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formspree.io/f/xrbyekky" method="POST">
+    <div class="form-group">
+        <label for="name" class="form-label">Your Name *</label>
+        <input type="text" id="name" name="name" class="form-input" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email" class="form-label">Email Address *</label>
+        <input type="email" id="email" name="email" class="form-input" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="service" class="form-label">Service Interested In</label>
+        <select id="service" name="service" class="form-input">
+            <option value="">Select a service</option>
+            <option value="youtube-shorts">YouTube Shorts Video Edit</option>
+            <option value="youtube-longform">YouTube Long Form Video Edit</option>
+            <option value="advertising">Advertising Video Edit</option>
+            <option value="instagram-post">Instagram Post</option>
+            <option value="motion-graphics">Motion Graphics Video Edit</option>
+            <option value="instagram-reels">Instagram Reels Edit</option>
+            <option value="seo">SEO Optimization</option>
+            <option value="brand-video">Brand Video Edit</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="message" class="form-label">Your Message *</label>
+        <textarea id="message" name="message" class="form-input form-textarea" required></textarea>
+    </div>
+    
+    <!-- Formspree hidden fields -->
+    <input type="hidden" name="_subject" value="New Contact Form Submission - Cliphera Media">
+    <input type="text" name="_gotcha" style="display:none"> <!-- Spam protection -->
+    
+    <button type="submit" class="btn">Send Message</button>
+    <div id="form-message" style="margin-top: 15px;"></div>
+</form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-methods">
+                        <!-- <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Our Location</h4>
+                                <p>123 Social Media Ave, Digital City</p>
+                            </div>
+                        </div> -->
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone Number</h4>
+                                <p>+91 70833 74015</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email Address</h4>
+                                <p>clipheramedia@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Instagram Handle</h4>
+                                <p>@cliphera_media</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Follow Us</h4>
+                        <div class="footer-social">
+                            <a href="https://x.com/cliphera_media" target="_blank" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/cliphera_media/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/cliphera-media-5b6490387/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Cliphera Media</h3>
+                    <p>We help brands grow through powerful video editing, creative storytelling, and content that truly connects with audiences.</p>
+                    <div class="footer-social">
+                        <a href="https://x.com/cliphera_media" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/cliphera_media/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/cliphera-media-5b6490387/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#work">Our Work</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">YouTube Video Editing</a></li>
+                        <li><a href="#">Instagram Content</a></li>
+                        <li><a href="#">Motion Graphics</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                        <li><a href="#">Advertising Videos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>DM us</h3>
+                    <p>Direct message us on Social Media</p>
+                        <a href="https://www.instagram.com/direct/t/17846363028573575/" target="_blank" class="btn">DM Now!</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cliphera Media. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Work Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const workCards = document.querySelectorAll('.work-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                workCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Contact Form Submission
+        // Contact Form Submission for Formspree
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('form-message');
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show loading state
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Clear previous messages
+    formMessage.textContent = '';
+    formMessage.className = '';
+    
+    // Send to Formspree
+    fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+            formMessage.style.color = 'green';
+            contactForm.reset();
+        } else {
+            return response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                    formMessage.textContent = data.errors.map(error => error.message).join(', ');
+                } else {
+                    formMessage.textContent = 'Oops! There was a problem submitting your form';
+                }
+                formMessage.style.color = 'red';
+            });
+        }
+    })
+    .catch(error => {
+        formMessage.textContent = 'Oops! There was a problem submitting your form';
+        formMessage.style.color = 'red';
+    })
+    .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+});
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Touch device optimizations
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
+        
+        // Handle responsive images
+        function handleImageResize() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                // Ensure images don't exceed their container width
+                if (img.width > img.parentElement.offsetWidth) {
+                    img.style.maxWidth = '100%';
+                    img.style.height = 'auto';
+                }
+            });
+        }
+        
+        // Call on load and resize
+        window.addEventListener('load', handleImageResize);
+        window.addEventListener('resize', handleImageResize);
+        
+        // Performance optimization: Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>
